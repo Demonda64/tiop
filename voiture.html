@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    console.log(voiture.type);
+
+    var v1 = Object.create(voiture);
+    v1.couleur = 'blue';
+    v1.type = "berline";
+    console.log(v1.couleur);
+    console.log(voiture.couleur);
+
+    var v2 = Object.create(voiture);
+    v2.couleur = 'yellow';
+    v2.type = "familiale";
+    console.log(v2.couleur);
+
+    var v3 = Object.create(voiture);
+    console.log(v3.couleur);
+    v3.afficher = function () {
+      alert(v3.couleur);
+    };
+    //v3.afficher();
+
+    window.onload = function () {
+      afficherVoiture(v1);
+      afficherVoiture(v2);
+      afficherVoiture(v3);
+
+    };
+
+
+    function afficherVoiture(o) {
+      document.querySelector('div.tiop').innerHTML +=
+        "<img src='" + o.type + ".png' style='background-color:" + o.couleur + "'/>";
+
+    }
+
+  </script>
+  <title>Voiture</title>
+</head>
+
+<body>
+  <div class="box-login">
+
+    <h2>Faites votre choix </h2>
+
+    <form>
+      <div class="form-groupe">
+        <label for="typeDeVoiture">Type de voiture</label>
+        <select id="monselect">
+          <option value="v1">Berline</option>
+          <option value="v2" selected>Familliale</option>
+          <option value="v3">Citadine</option>
+        </select>
+      </div>
+      <div class="form-groupe">
+        <label for="color">Couleurs</label>
+        <input type="color" id="couleurDeLaTiop">
+      </div>
+      <button type="submit">Création de la voiture</button>
+  </div>
+  </form>
+  </div>
+  <div class="tiop"></div>
+</body>
+
+</html>
